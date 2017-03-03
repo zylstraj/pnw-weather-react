@@ -1,0 +1,42 @@
+html {
+  font-size: 1em;
+  font-family: 'Amatic SC', cursive;
+  text-align: center;
+}
+/*div {
+  text-align: center;
+}*/
+/*input {
+  text-align: center;
+  font-family: 'Amatic SC', cursive;
+}*/
+h1 {
+  /*text-align: center;*/
+  font-size: 4em;
+}
+p {
+  font-family: 'Amatic SC', cursive;
+  font-size: 2em;
+}
+h2 {
+  font-family: 'Amatic SC', cursive;
+  font-size: 3em;
+}
+ul li {
+  text-decoration: none;
+  display: inline-block;
+  margin: 0 .5em;
+  font-size: 2em;
+}
+/*ul {
+  text-align: center;
+}*/
+li:hover {
+  color: orange;
+}
+@media (min-width: 600px) {
+  ul li {
+    margin: 0 1em;
+    font-size: 2.5em;
+  }
+}
