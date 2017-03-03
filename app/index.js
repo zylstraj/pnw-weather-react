@@ -10,19 +10,50 @@ class App extends React.Component {
       Portland: [],
       Vancouver: []
     }
-  },
-  componentDidMount: function() {
-    var _this = this;
-    this.serverRequest =
-      axios
-        .get("http://api.openweathermap.org/data/2.5/weather?id=5746545&units=imperial&APPID=0547f7cf3264ad65fb0b9df34fdf9cb1")
-        .then(function(result) {
-          console.log(result);
-          // _this.setState({
-          //   jobs: result.data.jobs
-          // });
+  }
+  componentDidMount() {
+    const portlandUrl = "http://api.openweathermap.org/data/2.5/weather?id=5746545&units=imperial&APPID=0547f7cf3264ad65fb0b9df34fdf9cb1";
+    const seattleUrl = "http://api.openweathermap.org/data/2.5/weather?id=5809844&units=imperial&APPID=0547f7cf3264ad65fb0b9df34fdf9cb1";
+    const vancouverUrl = "http://api.openweathermap.org/data/2.5/weather?id=6173331&units=imperial&APPID=0547f7cf3264ad65fb0b9df34fdf9cb1";
+      axios.get(portlandUrl)
+      .then(response => {
+        console.log(this);
+        console.log(response.data); // ex.: { user: 'Your User'}
+        console.log(response.status); // ex.: 200
+        this.setState({
+          Portland: {
+            "description": response.data.weather[0].description,
+            "temperature": response.data.main.temp
+          }
         })
-  },
+      });
+      axios.get(vancouverUrl)
+      .then(response => {
+        console.log(this);
+        console.log(response.data); // ex.: { user: 'Your User'}
+        console.log(response.status); // ex.: 200
+        this.setState({
+          Vancouver: {
+            "description": response.data.weather[0].description,
+            "temperature": response.data.main.temp
+          }
+        })
+      });
+      axios.get(seattleUrl)
+      .then(response => {
+        console.log(this);
+        console.log(response.data); // ex.: { user: 'Your User'}
+        console.log(response.status); // ex.: 200
+        this.setState({
+          Seattle: {
+            "description": response.data.weather[0].description,
+            "temperature": response.data.main.temp
+          }
+        })
+      });
+
+
+      }
   render() {
     return(
       <div>
@@ -32,6 +63,10 @@ class App extends React.Component {
           <li id="portlandWeather">Portland</li>
           <li id="vancouverWeather">Vancouver</li>
         </ul>
+        <div>
+          <p>Main Weather<br/>{this.state.Portland.description}</p>
+          <p>Temperature: {this.state.Portland.temperature}</p>
+        </div>
       </div>
     )
   }
