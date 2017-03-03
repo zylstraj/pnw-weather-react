@@ -3,6 +3,9 @@ bundle.js
 /bundle.js
 npm-debug.log
 /npm-debug.log
+/bundle.js.map
+bundle.js
+
 
 # Windows image file caches
 Thumbs.db
