@@ -51,21 +51,30 @@ class App extends React.Component {
           }
         })
       });
-
-
+      }
+      handleClick() {
+        console.log("clicked");
       }
   render() {
     return(
       <div>
         <h1>PNW Weather</h1>
         <ul>
-          <li id="seattleWeather">Seattle</li>
-          <li id="portlandWeather">Portland</li>
-          <li id="vancouverWeather">Vancouver</li>
+          <li onClick={this.handleClick} id="seattleWeather">Seattle</li>
+          <li onClick={this.handleClick} id="portlandWeather">Portland</li>
+          <li onClick={this.handleClick} id="vancouverWeather">Vancouver</li>
         </ul>
         <div>
-          <p>Main Weather<br/>{this.state.Portland.description}</p>
+          <p><br/>{this.state.Portland.description}</p>
           <p>Temperature: {this.state.Portland.temperature}</p>
+        </div>
+        <div>
+          <p>Main Weather<br/>{this.state.Seattle.description}</p>
+          <p>Temperature: {this.state.Seattle.temperature}</p>
+        </div>
+        <div>
+          <p>Main Weather<br/>{this.state.Vancouver.description}</p>
+          <p>Temperature: {this.state.Vancouver.temperature}</p>
         </div>
       </div>
     )
