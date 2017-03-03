@@ -5,7 +5,12 @@ import axios from "axios";
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.handleSeattle = this.handleSeattle.bind(this);
+    this.handlePortland = this.handlePortland.bind(this);
+    this.handleVancouver = this.handleVancouver.bind(this);
     this.state = {
+      shownTemp: [],
+      shownDescription: [],
       Seattle: [],
       Portland: [],
       Vancouver: []
@@ -52,29 +57,54 @@ class App extends React.Component {
         })
       });
       }
-      handleClick() {
+      handleSeattle() {
         console.log("clicked");
+        this.setState({
+          shownTemp: {
+            "temperature": this.state.Seattle.temperature
+          },
+          shownDescription: {
+            "description": this.state.Seattle.description
+          }
+        });
+
+      }
+      handlePortland() {
+        console.log("clicked");
+        this.setState({
+          shownTemp: {
+            "temperature": this.state.Portland.temperature
+          },
+          shownDescription: {
+            "description": this.state.Portland.description
+          }
+        });
+
+      }
+      handleVancouver() {
+        console.log("clicked");
+        this.setState({
+          shownTemp: {
+            "temperature": this.state.Vancouver.temperature
+          },
+          shownDescription: {
+            "description": this.state.Vancouver.description
+          }
+        });
+
       }
   render() {
     return(
       <div>
         <h1>PNW Weather</h1>
         <ul>
-          <li onClick={this.handleClick} id="seattleWeather">Seattle</li>
-          <li onClick={this.handleClick} id="portlandWeather">Portland</li>
-          <li onClick={this.handleClick} id="vancouverWeather">Vancouver</li>
+          <li onClick={this.handleSeattle} id="seattleWeather">Seattle</li>
+          <li onClick={this.handlePortland} id="portlandWeather">Portland</li>
+          <li onClick={this.handleVancouver} id="vancouverWeather">Vancouver</li>
         </ul>
         <div>
-          <p><br/>{this.state.Portland.description}</p>
-          <p>Temperature: {this.state.Portland.temperature}</p>
-        </div>
-        <div>
-          <p>Main Weather<br/>{this.state.Seattle.description}</p>
-          <p>Temperature: {this.state.Seattle.temperature}</p>
-        </div>
-        <div>
-          <p>Main Weather<br/>{this.state.Vancouver.description}</p>
-          <p>Temperature: {this.state.Vancouver.temperature}</p>
+          <p>Description: <br/>{this.state.shownDescription.description}</p>
+          <p>Temperature: {this.state.shownTemp.temperature}</p>
         </div>
       </div>
     )
