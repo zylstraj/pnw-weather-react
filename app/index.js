@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom"
 import axios from "axios";
+import styles from "./app.css"
 
 class App extends React.Component {
   constructor(props) {
